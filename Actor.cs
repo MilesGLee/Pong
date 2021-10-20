@@ -41,7 +41,7 @@ namespace Pong
             get { return _speed; }
         }
 
-        public Vector2 Postion
+        public Vector2 Position
         {
             get { return _position; }
             set { _position = value; }
@@ -96,12 +96,12 @@ namespace Pong
         public virtual void Update(float deltaTime)
         {
 
-            Console.WriteLine(_name + ":" + Postion.X + ":" + Postion.Y);
+            Console.WriteLine(_name + ":" + Position.X + ":" + Position.Y);
         }
 
         public virtual void Draw()
         {
-            Raylib.DrawText(Icon.Symbol.ToString(), (int)Postion.X, (int)Postion.Y, 50, Icon.color);
+            Raylib.DrawText(Icon.Symbol.ToString(), (int)Position.X, (int)Position.Y, 50, Icon.color);
         }
 
         public void End()

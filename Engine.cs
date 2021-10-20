@@ -14,6 +14,9 @@ namespace Pong
         private static int _currentSceneIndex;
         private Scene[] _scenes = new Scene[0];
         private Stopwatch _stopwatch = new Stopwatch();
+        private Ping ping;
+        private Paddle paddle1;
+        private Paddle paddle2;
 
 
         /// <summary>
@@ -59,7 +62,7 @@ namespace Pong
         private void Start()
         {
             //created a window using raylib
-            Raylib.InitWindow(800, 450, "The math for game. ");
+            Raylib.InitWindow(800, 450, "Pong for one :(");
             Raylib.SetTargetFPS(0);
 
             _stopwatch.Start();
@@ -68,13 +71,18 @@ namespace Pong
             //the Start function smaller
             Scene scene = new Scene();
 
-
-            Paddle paddle1 = new Paddle('|', 110, 1, 150, Color.RAYWHITE, "Paddle");
+            ping = new Ping('*', 400, 225, 200, Color.BLUE, "Ping");
+            Actor test = new Actor('o', 25, 210, 0, Color.LIGHTGRAY, "Actor");
+            paddle1 = new Paddle('|', 25, 225, 150, Color.RAYWHITE, false, "Paddle");
+            paddle2 = new Paddle('|', 775, 225, 150, Color.RAYWHITE, true, "Paddle");
 
 
 
             //adds the actor to the scene and takes in that actor
             scene.AddActor(paddle1);
+            scene.AddActor(paddle2);
+            scene.AddActor(ping);
+            scene.AddActor(test);
 
             _currentSceneIndex = AddScene(scene);
 
@@ -94,7 +102,7 @@ namespace Pong
             while (Console.KeyAvailable)
                 Console.ReadKey(true);
 
-
+            
         }
 
         /// <summary>

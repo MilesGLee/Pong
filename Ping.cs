@@ -6,15 +6,10 @@ using Raylib_cs;
 
 namespace Pong
 {
-    class Paddle : Actor
+    class Ping : Actor
     {
         private float _speed;
         private Vector2 _velocity;
-        private bool _player;
-        private Vector2 _c1;
-        private Vector2 _c2;
-        private Vector2 _c3;
-        private Vector2 _c4;
 
         public float Speed
         {
@@ -28,11 +23,10 @@ namespace Pong
             set { _velocity = value; }
         }
 
-        public Paddle(char icon, float x, float y, float speed, Color color, bool player, string name = "Paddle")
+        public Ping(char icon, float x, float y, float speed, Color color, string name = "Paddle")
             : base(icon, x, y, speed, color, name)
         {
             _speed = speed;
-            _player = player;
         }
 
 
@@ -40,21 +34,12 @@ namespace Pong
         public override void Update(float deltaTime)
         {
             int yDiretion = 0;
-            //get the player input direction
-            if (_player == false)
-            {
-                yDiretion = -Convert.ToInt32(Raylib.IsKeyDown(KeyboardKey.KEY_W))
-                    + Convert.ToInt32(Raylib.IsKeyDown(KeyboardKey.KEY_S));
-            }
-            else 
-            {
-                yDiretion = -Convert.ToInt32(Raylib.IsKeyDown(KeyboardKey.KEY_UP))
-                    + Convert.ToInt32(Raylib.IsKeyDown(KeyboardKey.KEY_DOWN));
-            }
+            int xDirection = 1;
+            
 
             //Create a vector tht stores the move input
             //Vector2 moveDirection = new Vector2(xDiretion, yDiretion);
-            Vector2 moveDirection = new Vector2(0, yDiretion);
+            Vector2 moveDirection = new Vector2(xDirection, yDiretion);
 
             //caculates the veclocity 
             Velocity = moveDirection.Normalized * Speed * deltaTime;
@@ -63,11 +48,13 @@ namespace Pong
             //moves the player
             Position += Velocity;
 
+            if (Position.X > 800)
+                Position = new Vector2 { X = 400, Y = 225 };
         }
 
         public override void OnCollision(Actor actor)
         {
-
+            Console.WriteLine("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA");
         }
     }
 }
