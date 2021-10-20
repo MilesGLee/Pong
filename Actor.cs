@@ -120,7 +120,7 @@ namespace Pong
 
         public virtual bool CheckForCollision(Actor other) 
         {
-            float combineRadii = actor.CollisionRadius + CollisionRadius;
+            float combineRadii = other.CollisionRadius + CollisionRadius;
             float distance = Vector2.Distance(Position, other.Position);
 
             return distance > combineRadii;
