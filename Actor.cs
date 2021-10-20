@@ -24,6 +24,7 @@ namespace Pong
         private bool _started;
         private float _speed;
         private Vector2 _forward = new Vector2(1, 0);
+        public float CollisionRadius;
 
 
         public bool Started
@@ -115,6 +116,14 @@ namespace Pong
         public virtual void OnCollision(Actor actor)
         {
 
+        }
+
+        public virtual bool CheckForCollision(Actor other) 
+        {
+            float combineRadii = actor.CollisionRadius + CollisionRadius;
+            float distance = Vector2.Distance(Position, other.Position);
+
+            return distance > combineRadii;
         }
     }
 }

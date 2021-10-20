@@ -73,6 +73,7 @@ namespace Pong
 
             ping = new Ping('*', 400, 225, 200, Color.BLUE, "Ping");
             Actor test = new Actor('o', 25, 210, 0, Color.LIGHTGRAY, "Actor");
+            Actor test2 = new Actor('o', 25, 230, 0, Color.LIGHTGRAY, "Actor");
             paddle1 = new Paddle('|', 25, 225, 150, Color.RAYWHITE, false, "Paddle");
             paddle2 = new Paddle('|', 775, 225, 150, Color.RAYWHITE, true, "Paddle");
 
@@ -83,6 +84,7 @@ namespace Pong
             scene.AddActor(paddle2);
             scene.AddActor(ping);
             scene.AddActor(test);
+            scene.AddActor(test2);
 
             _currentSceneIndex = AddScene(scene);
 

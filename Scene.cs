@@ -48,8 +48,7 @@ namespace Pong
                 {
                     //sees if the position of the actor 1 and actor 2 are on the same...
                     //position but at the end it sais if actor 2 is actor 1...
-                    if (_actors[i].Position == _actors[j].Position && j != i)
-                        //then start on Collision for actor 1 by making actor 2 be collied with.
+                    if (_actors[i].CheckForCollision(_actors[j]) && j != i)
                         _actors[i].OnCollision(_actors[j]);
                 }
 
